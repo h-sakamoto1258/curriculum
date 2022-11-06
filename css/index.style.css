@@ -1,0 +1,21 @@
+.full {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: grey;
+      center / cover;
+  }
+  
+  h1 {
+    font-family: 'sans-serif';
+    border-bottom: 1px solid white;
+    padding-top: 40px;
+    text-align:center;
+    color:white;
+    font: size 15px;
+  }
+
+  .main {
+    text-align: center;
+    color:white;
+  }
