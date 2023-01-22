@@ -1,16 +1,18 @@
 <?php
 
-require ('db_connect.php');
+require_once ('db_connect.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $password = $_POST['password'];  
+} else {
+    echo "氏名もしくはパスワードが未入力です。";
 }
 
 // $name = trim(filter_input(INPUT_POST, 'name'));
 // $password = trim(filter_input(INPUT_POST, 'password'));
 
-if (isset($name)&&($password)) {
+if (isset($name , $password)) {
     echo "登録が完了しました";
 }
 
