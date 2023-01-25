@@ -2,10 +2,24 @@
 
 require_once ('db_connect.php');
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name = $_POST['name'];
-    $password = $_POST['password'];  
-} 
+// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // $name = $_POST['name'];
+    // $password = $_POST['password'];
+// }
+?>
+
+<?php
+$name = "";
+$password = "";
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
+  if (!empty($_POST['name']) && !empty($_POST['password'])) {
+    $named = $_POST['name'];
+    $passed = $_POST['password'];
+} else {
+    exit;
+  }
+}
+
 // else {
 //     echo "氏名もしくはパスワードが未入力です。";
 // }
@@ -13,9 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // $name = trim(filter_input(INPUT_POST, 'name'));
 // $password = trim(filter_input(INPUT_POST, 'password'));
 
-if (isset($name , $password)) {
+if (isset($named , $passed)) {
     echo "登録が完了しました";
-}
+    }
 
 function db_connect() {
     try {
@@ -29,6 +43,7 @@ function db_connect() {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html>
