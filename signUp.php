@@ -2,39 +2,31 @@
 
 require_once ('db_connect.php');
 
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // $name = $_POST['name'];
-    // $password = $_POST['password'];
-// }
-?>
-
-<?php
-$name = "";
-$password = "";
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
   if (!empty($_POST['name']) && !empty($_POST['password'])) {
     $named = $_POST['name'];
     $passed = $_POST['password'];
-} else {
-    exit;
-  }
+// } else {
+//     exit;
+//   }
 }
+// if (isset($named , $passed)) {
+//     echo "登録が完了しました";
+//     }
+$pdo = new PDO(PDO_DSN, DB_USERNAME, DB_PASSWORD);
 
-// else {
-//     echo "氏名もしくはパスワードが未入力です。";
-// }
-
-// $name = trim(filter_input(INPUT_POST, 'name'));
-// $password = trim(filter_input(INPUT_POST, 'password'));
-
-if (isset($named , $passed)) {
-    echo "登録が完了しました";
-    }
-
-function db_connect() {
+// function db_connect() {
     try {
-        $pdo = new PDO(PDO_DSN, DB_USERNAME, DB_PASSWORD);
-        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $sql = 'SELECT * FROM users WHERE id < :id';
+        $hash = password_hash($passed, PASSWORD_DEFAULT);
+        $prepare = $pdo->prepare($sql);
+        $pdo->query(
+            "INSERT INTO users (name, password) VALUE($named, $passed)"
+        );
+        $prepare->execute();
+        if (isset($named , $passed)) {
+            echo "登録が完了しました";
+            }
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $pdo;
     } catch(PDOException $e) {
