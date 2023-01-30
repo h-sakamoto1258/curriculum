@@ -38,8 +38,8 @@ if(isset($_POST["signUp"])) {
 
 try{
       $stmt = $pdo->prepare($sql);
-      $stmt->bindParam('name', $name , PDO::PARAM_INT);
-      $stmt->bindParam('password', $password_hash , PDO::PARAM_INT);
+      // $stmt->bindParam('name', $name , PDO::PARAM_INT);
+      // $stmt->bindParam('password', $password_hash , PDO::PARAM_INT);
       $stmt->execute();
       echo "登録が完了しました";
       
