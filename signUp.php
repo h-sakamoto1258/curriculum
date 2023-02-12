@@ -6,35 +6,10 @@ if(isset($_POST["signUp"])) {
     $name = $_POST["name"];
     $password = $_POST["password"];
     $password_hash = password_hash($password, PASSWORD_DEFAULT);
-// if ($_SERVER['REQUEST_METHOD'] === "POST") {
-//   if (!empty($_POST['name']) && !empty($_POST['password'])) {
-//     $named = $_POST['name'];
-//     $passed = $_POST['password'];
 
     $sql = "INSERT INTO users (name, password) VALUES ('{$name}','{$password_hash}')";
 
     $pdo = db_connect();
-
-// $pdo = new PDO(PDO_DSN, DB_USERNAME, DB_PASSWORD);
-
-//     try {
-//         $sql = 'SELECT * FROM users WHERE id < :id';
-//         $hash = password_hash($passed, PASSWORD_DEFAULT);
-//         $prepare = $pdo->prepare($sql);
-//         $pdo->query(
-//             "INSERT INTO users (name, password) VALUE($named, $passed)"
-//         );
-//         $prepare->execute();
-//         if (isset($named , $passed)) {
-//             echo "登録が完了しました";
-//             }
-//         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//         return $pdo;
-//     } catch(PDOException $e) {
-//         echo 'Error: ' . $e->getMessage();
-//         die();
-//     }
-// }
 
 try{
       $stmt = $pdo->prepare($sql);

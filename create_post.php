@@ -35,7 +35,6 @@ if (isset($_POST)) {
             $sql = "SELECT * FROM posts WHERE title = :title && content = :content";
             // プリペアドステートメントの準備
             $stmt = $pdo -> prepare($sql);
-            // $stmt = $pdo -> prepare("INSERT INTO posts(title , content) VALUE (;title , ;content)");
             // タイトルをバインド
             $stmt -> bindValue(':title' , $title , PDO::PARAM_STR);
             // 本文をバインド
@@ -43,7 +42,8 @@ if (isset($_POST)) {
             // 実行
             $stmt -> excute();
             // main.phpにリダイレクト
-            
+            header("Location: main.php");
+            exit;
         } catch (PDOException $e) {
             // エラーメッセージの出力
             echo 'Error: ' . $e->getMessage();
