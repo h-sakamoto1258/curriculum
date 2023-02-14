@@ -32,7 +32,8 @@ if (isset($_POST)) {
 
         try {
             // SQL文の準備
-            $sql = "SELECT * FROM posts WHERE title = :title && content = :content";
+            // $sql = "SELECT * FROM posts WHERE title = :title && content = :content";
+            $sql = "INSERT INTO comments (title, content) VALUES ('{$title}', '{$content}')";
             // プリペアドステートメントの準備
             $stmt = $pdo -> prepare($sql);
             // タイトルをバインド

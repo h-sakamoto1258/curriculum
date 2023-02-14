@@ -10,41 +10,23 @@ check_user_logged_in();
 
 // URLの?以降で渡されるIDをキャッチ
 $id = $_GET['id'];
+// もし、$idが空であったらmain.phpにリダイレクト
+// 不正なアクセス対策
+if (empty($id)) {
+    header("Location: main.php");
+    exit;
 
 redirect_main_unless_parameter($id);
 
+$row = find_post_by_id($id);
+// 関数から取得した値を格納
+$id = $row['id'];
+$title = $row['title'];
+$content = $row['content'];
 
 // PDOのインスタンスを取得
 $pdo = db_connect();
 
-find_post_by_id($id);
-
-// try {
-    // SQL文の準備
-    // $sql = "SELECT * FROM posts WHERE id = :id";
-    // プリペアドステートメントの作成
-    // $stmt = $pdo->prepare($sql);
-    // idのバインド
-//     $stmt->bindParam(':id', $id);
-//     $stmt->execute();
-// } catch (PDOException $e) {
-    // エラーメッセージの出力
-    // echo 'Error: ' . $e->getMessage();
-    // 終了
-//     die();
-// }
-
-// 結果が1行取得できたら
-// if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-//     return $row;
-    $id = $row['id'];
-    $title = $row['title'];
-    $content = $row['content'];
-// } else {
-//     // 対象のidでレコードがない => 不正な画面遷移
-//     // echo "対象のデータがありません。";
-//     // redirect_main_unless_parameter($row);
-// }
 ?>
 
 <!DOCTYPE html>

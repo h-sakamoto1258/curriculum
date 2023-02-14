@@ -17,8 +17,8 @@ $pdo = db_connect();
 
 try{
     // SQL文の準備
-    // $sql = "SELECT * FROM posts";
-    $sql = "SELECT * FROM users WHERE name = :name";
+    $sql = "SELECT * FROM posts";
+    // $sql = "SELECT * FROM users WHERE name = :name";
     // プリペアドステートメントの作成
     $stmt = $pdo->prepare($sql);
     // 実行

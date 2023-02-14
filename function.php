@@ -1,6 +1,5 @@
 <?php
-// function.php
-/**
+/*
  * $_SESSION["user_name"]が空だった場合、ログインページにリダイレクトする
  * @return void
  */

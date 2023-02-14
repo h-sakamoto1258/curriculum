@@ -13,35 +13,23 @@ $id = $_GET['id'];
 
 redirect_main_unless_parameter($id);
 
+$row = find_post_by_id($id);
+// 関数から取得した値を格納
+$id = $row['id'];
+$title = $row['title'];
+$content = $row['content'];
+
 // PDOのインスタンスを取得
-$pdo = db_connect();
+$pdo_comments = db_connect();
+/*
+⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️
+*＊このpdofは有効？
+⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️
+*/
+// $pdo = db_connect();
 
-find_post_by_id($id);
 
-// try {
-    // SQL文の準備
-    // $sql = "UPDATE posts SET title = :title, content = :content WHERE id = :id";
-    // プリペアドステートメントの作成
-    // $stmt = $pdo->prepare($sql);
-    // idのバインド
-//     $stmt->bindParam(':id', $id);
-//     FILL_IN
-// } catch (PDOException $e) {
-    // エラーメッセージの出力
-    // echo 'Error: ' . $e->getMessage();
-    // 終了
-//     die();
-// }
 
-// 結果が1行取得できたら
-// if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    $id = $row['id'];
-    $title = $row['title'];
-    $content = $row['content'];
-// } else {
-//     // 対象のidでレコードがない => 不正な画面遷移
-//     echo "対象のデータがありません。";
-// }
 ?>
 <!DOCTYPE html>
 <html>

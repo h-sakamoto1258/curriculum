@@ -22,7 +22,8 @@ $pdo = db_connect();
 
 try {
     // SQL文の準備
-    $sql = "UPDATE posts SET title = :title, content = :content WHERE id = :id";
+    // WHERE id = :id";
+    $sql = "SELECT * FROM posts WHERE id = :id";
     // プリペアドステートメントの作成
     $stmt = $pdo->prepare($sql);
     // idのバインド

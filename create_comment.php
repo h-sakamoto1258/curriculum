@@ -26,10 +26,9 @@
     $pdo = db_connect();
     try { 
     // SQL文の準備 FILL_IN
-    // $sql = "SELECT * FROM posts";
-    $sql = "SELECT * FROM comments";
+    // $sql = "SELECT * FROM comments WHERE post_id = :post_id && name = :name && content = :content";
+    $sql = "INSERT INTO comments (post_id, name, content) VALUES ('{$post_id}', '{$name}', '{$content}')";
     // $sql = "INSERT INTO users (name, password) VALUES ('{$name}','{$password_hash}')";
-    // $sql = "SELECT * FROM users WHERE name = :name";
     // プリペアドステートメントの準備 FILL_IN
     $stmt = $pdo->prepare($sql);
     // post_idをバインド FILL_IN
