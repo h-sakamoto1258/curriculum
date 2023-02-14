@@ -13,7 +13,6 @@ $id = $_GET['id'];
 
 redirect_main_unless_parameter($id);
 
-
 // PDOのインスタンスを取得
 $pdo = db_connect();
 

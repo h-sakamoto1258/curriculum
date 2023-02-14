@@ -6,6 +6,7 @@ require_once ('db_connect.php');
 require_once ('function.php');
 
 // ログインしていなければ、login.phpにリダイレクト
+session_start();
 if (!(isset($_SESSION["user_id"]))) {
     header('Location: login.php'); // ログインしていれば
     exit; // 処理終了
@@ -16,8 +17,8 @@ $pdo = db_connect();
 
 try{
     // SQL文の準備
-    $sql = "SELECT * FROM posts";
-
+    // $sql = "SELECT * FROM posts";
+    $sql = "SELECT * FROM users WHERE name = :name";
     // プリペアドステートメントの作成
     $stmt = $pdo->prepare($sql);
     // 実行
