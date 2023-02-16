@@ -33,7 +33,7 @@ if (isset($_POST)) {
         try {
             // SQL文の準備
             // $sql = "SELECT * FROM posts WHERE title = :title && content = :content";
-            $sql = "INSERT INTO comments (title, content) VALUES ('{$title}', '{$content}')";
+            $sql = "INSERT INTO comment (title, content) VALUES ('{$title}', '{$content}')";
             // プリペアドステートメントの準備
             $stmt = $pdo -> prepare($sql);
             // タイトルをバインド
@@ -41,7 +41,7 @@ if (isset($_POST)) {
             // 本文をバインド
             $stmt -> bindValue(':content' , $content , PDO::PARAM_STR);
             // 実行
-            $stmt -> excute();
+            $stmt -> execute();
             // main.phpにリダイレクト
             header("Location: main.php");
             exit;

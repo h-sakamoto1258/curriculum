@@ -23,7 +23,7 @@ $pdo = db_connect();
 try {
     // SQL文の準備
     // WHERE id = :id";
-    $sql = "SELECT * FROM posts WHERE id = :id";
+    $sql = "DELETE FROM posts WHERE id = :id";
     // プリペアドステートメントの作成
     $stmt = $pdo->prepare($sql);
     // idのバインド

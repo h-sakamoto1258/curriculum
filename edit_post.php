@@ -15,6 +15,7 @@ $id = $_GET['id'];
 if (empty($id)) {
     header("Location: main.php");
     exit;
+    }
 
 redirect_main_unless_parameter($id);
 

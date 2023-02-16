@@ -1,6 +1,6 @@
 <?php
     // db_connect.phpの読み込みFILL_IN
-    require_once('db.connect.php');
+    require_once('db_connect.php');
 
     // function.phpの読み込みFILL_IN
     require_once('function.php');
@@ -17,6 +17,7 @@
     echo '名前が未入力です。';
     } else if (empty($_POST["content"])) { 
     echo 'コメントが未入力です。'; 
+    }
     }
     if (!empty($_POST["name"]) && !empty($_POST["content"])) { 
     // name、contentを格納 
@@ -48,15 +49,15 @@
     // 終了
     die(); 
     }
-    }
     } else {
     // POSTで渡されたデータがなかった場合
-    if (empty($_POST[])) {
+    if (empty($_POST[""])) {
     // GETで渡されたpost_idを受け取る 
     $post_id = $_GET['post_id']; 
     // $post_idが空だった場合は不正な遷移なので、main.phpに戻す
     redirect_main_unless_parameter($post_id);
     }
+}
 ?>
 
 <!DOCTYPE html>
