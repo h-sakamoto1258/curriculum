@@ -6,15 +6,6 @@ check_user_logged_in();
 
 $pdo = db_connect();
 
-
-$sql = "INSERT INTO books (title, date, stock) VALUES 
-  ('JAVA初級','date('Y-m-d')', 10), 
-  ('JAVA中級','date('Y-m-d')', 20), 
-  ('JAVA初級','date('Y-m-d')', 15), 
-  ('PHP初級','date('Y-m-d')', 10), 
-  ('PHP中級','date('Y-m-d')', 20), 
-  ('PHP上級','date('Y-m-d')', 15) ";
-
 try{
     $sql = "SELECT * FROM books ORDER BY id ASC";
     $stmt = $pdo->prepare($sql);
@@ -24,7 +15,16 @@ try{
     die();
   }
 
+try{
+    $add_sql = "INSERT INTO books (title, date, stock) VALUES (title, date, stock)";
+    $add_stmt = $pdo->prepare($add_sql);
+    $add_stmt->execute();
+    }catch(PDOExeption $e){
+    echo 'Error:'.$e->getMessage();
+    die();
+    }
 ?>
+
 
 <!doctype html>
 <html>
@@ -80,9 +80,10 @@ try{
                 <option>5</option>
             </SELECT>
         </label>
-    <!-- <input type="text" name="name" id="name" placeholder="選択してください"> -->
     <br>
     </div>
-    <a href="" class="btn">登録</a>
+    <button class="btn" type="submit" value="submit" id="signUp" name="signUp">登録</button>
+    <a href=""></a><br />
+    <!-- <a href="" class="btn">登録</a><br /> -->
 </body>
 </html>

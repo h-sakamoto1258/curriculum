@@ -24,6 +24,7 @@ try{
   }
 ?>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,9 +43,12 @@ try{
         <input type="password" name="password" id="password" placeholder="パスワード"><br>
         <!-- <input type="submit" value="submit" id="signUp" name="signUp"> -->
       </div>
-      <div class="btn">
-        <input type="hidden" value="submit" id="signUp" name="signUp">
-        <a href="">新規登録</a>
+      <div>
+      <button class="button" type="submit" value="submit" id="signUp" name="signUp">新期登録</button>
+      <!-- <button>
+        <input type="" value="submit" id="signUp" name="signUp">
+      </button> -->
+      <!-- <a href="login.php">新規登録</a><br /> -->
       </div>
     </form>
 </body>
