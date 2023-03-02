@@ -15,13 +15,37 @@ try{
     die();
   }
 
-try{
-    $add_sql = "INSERT INTO books (title, date, stock) VALUES (title, date, stock)";
-    $add_stmt = $pdo->prepare($add_sql);
-    $add_stmt->execute();
-    }catch(PDOExeption $e){
-    echo 'Error:'.$e->getMessage();
-    die();
+if(!empty($_POST)){
+    if(empty($_POST["title"])){
+    echo "タイトルが未入力です。";
+    }
+    if(empty($_POST["date"])){
+    echo "発売日が未入力です。";
+    }
+    if(empty($_POST["stock"])){
+    echo "在庫数が未入力です。";
+    }
+}
+
+if(!empty($_POST["title"]) && !empty($_POST["date"]) && !empty($_POST["stock"])){
+      $title = $_POST["title"];
+      $date = $_POST["date"];
+      $stock = $_POST["stock"];
+
+      $add_sql = "INSERT INTO books (title, date, stock) VALUES (:title, :date, :stock)";
+
+      $pdo = db_connect();
+      try{
+        $add_stmt = $pdo->prepare($add_sql);
+        $add_stmt->bindParam(':title', $title);
+        $add_stmt->bindParam(':date', $date);
+        $add_stmt->bindParam(':stock', $stock);
+        $add_stmt->execute();
+        header("Location: main.php");
+      }catch(PDOExeption $e){
+        echo "Error:".$e->getMessage();
+        die();
+      }
     }
 ?>
 
@@ -59,31 +83,32 @@ try{
     </table>
     <h2>本登録画面</h2>
     <form method="POST" action="">
-    <div class="name">
-    <input type="text" name="name" id="name" placeholder="タイトル">
-    <br>
-    </div>
-    <div class="name">
-    <input type="text" name="name" id="name" placeholder="発売日">
-    <br>
-    </div>
-    在庫数
-    <div>
-    <!-- <div class="zaiko"> -->
-        <label>
-            <SELECT>
-                <option>選択してください</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </SELECT>
-        </label>
-    <br>
-    </div>
-    <button class="btn" type="submit" value="submit" id="signUp" name="signUp">登録</button>
-    <a href=""></a><br />
+        <div class="name">
+            <input type="text" name="name" id="name" placeholder="タイトル">
+            <br>
+        </div>
+        <div class="name">
+            <input type="text" name="name" id="name" placeholder="発売日">
+            <br>
+        </div>
+        在庫数
+        <div>
+        <!-- <div class="zaiko"> -->
+            <label>
+                <SELECT>
+                    <option>選択してください</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </SELECT>
+            </label>
+            <br>
+        </div>
+        <button class="btn" type="submit" value="submit" id="signUp" name="signUp">登録</button>
+        <a href=""></a><br />
+    </form>
     <!-- <a href="" class="btn">登録</a><br /> -->
 </body>
 </html>
