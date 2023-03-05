@@ -84,11 +84,11 @@ if(!empty($_POST["title"]) && !empty($_POST["date"]) && !empty($_POST["stock"]))
     <h2>本登録画面</h2>
     <form method="POST" action="">
         <div class="name">
-            <input type="text" name="name" id="name" placeholder="タイトル">
+            <input type="text" name="title" id="name" placeholder="タイトル">
             <br>
         </div>
         <div class="name">
-            <input type="text" name="name" id="name" placeholder="発売日">
+            <input type="text" name="date" id="name" placeholder="発売日">
             <br>
         </div>
         在庫数
