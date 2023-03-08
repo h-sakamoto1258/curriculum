@@ -16,7 +16,6 @@ try{
       // $stmt->bindParam('password', $password_hash , PDO::PARAM_INT);
       $stmt->execute();
       echo "登録が完了しました";
-      
     }catch(PDOExeption $e){
       echo 'Error:'.$e->getMessage();
       die();
@@ -41,14 +40,9 @@ try{
       </div>
       <div class="pass">
         <input type="password" name="password" id="password" placeholder="パスワード"><br>
-        <!-- <input type="submit" value="submit" id="signUp" name="signUp"> -->
       </div>
       <div>
       <button class="button" type="submit" value="submit" id="signUp" name="signUp">新期登録</button>
-      <!-- <button>
-        <input type="" value="submit" id="signUp" name="signUp">
-      </button> -->
-      <!-- <a href="login.php">新規登録</a><br /> -->
       </div>
     </form>
 </body>

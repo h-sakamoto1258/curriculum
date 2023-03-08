@@ -88,12 +88,11 @@ if(!empty($_POST["title"]) && !empty($_POST["date"]) && !empty($_POST["stock"]))
             <br>
         </div>
         <div class="name">
-            <input type="text" name="date" id="name" placeholder="発売日">
+            <input type="date" name="date" id="name" placeholder="発売日">
             <br>
         </div>
         在庫数
         <div>
-        <!-- <div class="zaiko"> -->
             <label>
                 <SELECT name="stock" id="name">
                     <option value="">--選択してください--</option>
@@ -109,6 +108,5 @@ if(!empty($_POST["title"]) && !empty($_POST["date"]) && !empty($_POST["stock"]))
         <button class="btn" type="submit" value="submit" id="signUp" name="signUp">登録</button>
         <a href=""></a><br />
     </form>
-    <!-- <a href="" class="btn">登録</a><br /> -->
 </body>
 </html>

@@ -14,3 +14,4 @@ function db_connect() {
       die();
   }
 }
+?>
