@@ -15,7 +15,7 @@ if (!empty($_POST)) {
         $pass = htmlspecialchars($_POST['pass'], ENT_QUOTES);
         $pdo = db_connect();
         try {
-          $sql = "SELECT * FROM books WHERE name = :name";
+          $sql = "SELECT * FROM users WHERE name = :name";
           $stmt = $pdo->prepare($sql);
           $stmt->bindParam(':name', $name);
           $stmt->execute();
@@ -53,7 +53,8 @@ if (!empty($_POST)) {
     <form method="post" action="">
       <input type="text" name="name" size="15" id="name" placeholder="ユーザー名"><br><br>
       <input type="text" name="pass" size="15" id="password" placeholder="パスワード"><br><br>
-      <a href="main.php" class="login">ログイン</a><br />
+      <input type="submit" class="login"><br><br>
+      <!-- <a href="main.php" class="login">ログイン</a><br /> -->
     </form>
 </body>
 </html>
